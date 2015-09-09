@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+/**
+ * Module for loading content
+ */
+
+// NPM modules
+var program = require('commander');
+
+// Local modules
+var app = require('../lib/app.js');
+
+program
+  .arguments('<id>')
+  .usage('<id>')
+  .parse(process.argv);
+
+if (program.args.length) {
+  app.load(program.args.join(''));
+
+// No args, print help
+} else {
+  program.help();
+}

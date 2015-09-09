@@ -1,0 +1,30 @@
+{
+  "name": "hs",
+  "version": "0.0.1",
+  "description": "Store and load large pieces of data online",
+  "main": "bin/hs",
+  "bin": {
+    "hs": "bin/hs"
+  },
+  "dependencies": {
+    "chalk": "^1.1.0",
+    "commander": "^2.8.1",
+    "request-promise": "^0.4.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node bin/hs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ajay-gandhi/hs.git"
+  },
+  "keywords": [
+    "save",
+    "store",
+    "load",
+    "public"
+  ],
+  "author": "Ajay Gandhi",
+  "license": "ISC"
+}

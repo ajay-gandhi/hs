@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+/**
+ * Module for saving content
+ */
+
+// NPM modules
+var program = require('commander'),
+    tty     = require('tty');
+
+// Local modules
+var app = require('../lib/app.js');
+
+program
+  .arguments('<content>')
+  .parse(process.argv);
+
+if (program.args.length) {
+  // Regular arguments
+  var content = program.args.join(' ');
+  app.save(content);
+
+} else {
+  // Check if being piped
+  if (process.stdin.isTTY) {
+    // No args and no pipe, print help
+    program.help();
+
+  } else {
+    process.stdin.resume();
+    process.stdin.setEncoding('utf8');
+
+    // Gather all data
+    var content = '';
+    process.stdin.on('data', function (data) {
+      content += data;
+    });
+
+    // Save when finished
+    process.stdin.on('end', function () {
+      app.save(content);
+    });
+  }
+}
